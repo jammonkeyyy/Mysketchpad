@@ -3,6 +3,8 @@ package com.nju.OOP.shape;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.Random;
+import java.util.Vector;
 
 import com.nju.OOP.listener.ColorPanel;
 import com.nju.OOP.listener.ThicknessPanel;
@@ -33,6 +35,9 @@ public class DrawDot extends Shape{
     public void setcolorthick(Color color0,int thick) {
         Thickness=thick;
         color=color0;
+    }
+    public Vector<ScreenPoint> getpoint(){
+        return points;
     }
 }
 

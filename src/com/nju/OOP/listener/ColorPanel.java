@@ -23,7 +23,6 @@ public class ColorPanel  extends JPanel {
         btn1.addActionListener(new ActionListener() {/*选择红色*/
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
                 color=Color.RED;
                 btn1.setForeground(color);
                 btn1.repaint();
@@ -35,7 +34,6 @@ public class ColorPanel  extends JPanel {
         btn2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
                 color=Color.GREEN;
                 btn2.setForeground(color);
                 btn2.repaint();
@@ -47,7 +45,6 @@ public class ColorPanel  extends JPanel {
         btn3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
                 color=Color.BLUE;
                 btn3.setForeground(color);
                 btn3.repaint();
@@ -59,7 +56,6 @@ public class ColorPanel  extends JPanel {
         btn4.addActionListener(new ActionListener() {/*颜色选择器*/
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
                 chooser=new JColorChooser();
                 color0=chooser.showDialog(new JFrame(), "ColorChooser",Color.lightGray );//获取用户选择的颜色
                 if (color0 != null)

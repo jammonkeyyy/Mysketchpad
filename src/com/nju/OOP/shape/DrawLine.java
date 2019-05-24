@@ -15,7 +15,7 @@ public class DrawLine extends Shape{
         g.setColor(color);
         g.setStroke(new BasicStroke(Thickness));
         g.drawLine(points.firstElement().x, points.firstElement().y, points.lastElement().x, points.lastElement().y);
-       g.setColor(ColorPanel.color);
+        g.setColor(ColorPanel.color);
         g.setStroke(new BasicStroke(ThicknessPanel.thick));
     }
 }

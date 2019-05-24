@@ -13,17 +13,23 @@ public class BtnListener implements ActionListener {
         // TODO Auto-generated method stub
         JButton target = (JButton)e.getSource();
         String actionCommand = target.getActionCommand();
-        if(actionCommand.contentEquals("Line")) {
+        if(actionCommand.contentEquals("线条")) {
             DrawShapes.type = DrawShapes.LINE;
         }
-        if(actionCommand.contentEquals("Rectangle")) {
+        if(actionCommand.contentEquals("矩形")) {
             DrawShapes.type = DrawShapes.RECT;
         }
-        if(actionCommand.contentEquals("Circle")) {
+        if(actionCommand.contentEquals("圆")) {
             DrawShapes.type = DrawShapes.CIRCLE;
         }
-        if(actionCommand.contentEquals("Write")) {
+        if(actionCommand.contentEquals("画笔")) {
             DrawShapes.type = DrawShapes.write;
+        }
+        if(actionCommand.contentEquals("橡皮")) {
+            DrawShapes.type = DrawShapes.erase;
+        }
+        if(actionCommand.contentEquals("喷枪")) {
+            DrawShapes.type = DrawShapes.spray;
         }
         if(actionCommand.contentEquals("redo")) {
             Function.redo();
@@ -38,6 +44,4 @@ public class BtnListener implements ActionListener {
             Function.save();
         }
     }
-
-
 }

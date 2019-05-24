@@ -28,7 +28,7 @@ public class ThicknessPanel extends JPanel {
 
         add(jPanel_data);
 
-        jSlider.setMaximum(100);//最大值
+        jSlider.setMaximum(20);//最大值
         jSlider.setMinimum(thick);
         jSlider.setValue(thick);
         jSlider.addChangeListener(new ChangeListener() {

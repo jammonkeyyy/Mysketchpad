@@ -21,10 +21,10 @@ public class Paint extends JFrame{
     public static ThicknessPanel thickpanel = new ThicknessPanel();//粗细panel
     ShapeButton sbtn = new ShapeButton();//图形选择panel
 
-    JButton undobtn = new JButton(new ImageIcon("mysketchpad/img/undo.PNG"));
-    JButton redobtn = new JButton(new ImageIcon("mysketchpad/img/redo.PNG"));
-    JButton clearbtn = new JButton(new ImageIcon("mysketchpad/img/clear.PNG"));
-    JButton savebtn = new JButton(new ImageIcon("mysketchpad/img/save.PNG"));
+    JButton undobtn = new JButton(new ImageIcon("./img/undo.PNG"));
+    JButton redobtn = new JButton(new ImageIcon("./img/redo.PNG"));
+    JButton clearbtn = new JButton(new ImageIcon("./img/clear.PNG"));
+    JButton savebtn = new JButton(new ImageIcon("./img/save.PNG"));
 
     private JButton[] buttonArray = new JButton[]{undobtn,redobtn,clearbtn,savebtn};
     private JToolBar toolbar = new JToolBar();
@@ -40,12 +40,10 @@ public class Paint extends JFrame{
         for(int i=0;i<buttonArray.length;i++)
         {
             toolbar.add(buttonArray[i]);
-
             buttonArray[i].addActionListener(btns);
-
         }
-        buttonArray[0].setActionCommand("undo");
         //为按钮设置工具提示信息，当把鼠标放在其上时显示提示信息
+        buttonArray[0].setActionCommand("undo");
         buttonArray[0].setToolTipText("undo");
         buttonArray[1].setActionCommand("redo");
         buttonArray[1].setToolTipText("redo");
@@ -53,16 +51,15 @@ public class Paint extends JFrame{
         buttonArray[2].setToolTipText("clear");
         buttonArray[3].setActionCommand("save");
         buttonArray[3].setToolTipText("save");
-        /******/
         jp.setBackground(Color.WHITE);//白色背景
-        /******/
         jp.setLayout(new BorderLayout());
         jp.add(toolbar,BorderLayout.NORTH);
+
         jp1.add(gcolor);
-        jp1.add(thickpanel);
         jp1.add(sbtn);
+        jp1.add(thickpanel);
         jp.add(jp1);
-        /******/
+
         jf.add(jp,BorderLayout.NORTH);
         jf.add(pnlDisplayArea);
         jf.setSize(800, 700);//画图板大小800*800
