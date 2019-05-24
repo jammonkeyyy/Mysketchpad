@@ -23,6 +23,16 @@ public class DrawDot extends Shape{
             i=i+2;
             j=j+2;
         }
+        g.setColor(ColorPanel.color);
+        g.setStroke(new BasicStroke(ThicknessPanel.thick));
+    }
+    public void addpoint(int x1,int y1,int x2,int y2) {
+        points.add(new ScreenPoint(x1, y1));
+        points.add(new ScreenPoint(x2, y2));
+    }
+    public void setcolorthick(Color color0,int thick) {
+        Thickness=thick;
+        color=color0;
     }
 }
 

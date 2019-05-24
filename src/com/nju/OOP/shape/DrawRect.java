@@ -14,8 +14,8 @@ public class DrawRect extends Shape {
         g.setColor(color);
         g.setStroke(new BasicStroke(Thickness));
         g.drawRect(startPoint.x, startPoint.y, w, h);
-       // g.setColor(ColorPanel.color);
-      //  g.setStroke(new BasicStroke(ThicknessPanel.thick));
+        g.setColor(ColorPanel.color);
+        g.setStroke(new BasicStroke(ThicknessPanel.thick));
     }
 
 }
