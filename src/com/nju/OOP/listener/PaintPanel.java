@@ -5,7 +5,7 @@ import com.nju.OOP.shape.*;
 import com.nju.OOP.shape.Shape;
 
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
@@ -20,12 +20,16 @@ public class PaintPanel  extends JPanel implements MouseMotionListener, MouseLis
     private Point Begin = null;//起始点
     private Point End = null;//终止点
     private boolean dottedTag = true;
+    private boolean isword=false;
+    private boolean writeword=false;
     private Color color;//颜色
     public static int thick = 1;
     public static int w = 0;//宽度
     public static int h = 0;//高度
     DrawDot dot;
     DrawSpray spray;
+    DrawTriangle triangle;
+    DrawWord word;
 
     public PaintPanel() {
 
@@ -37,6 +41,7 @@ public class PaintPanel  extends JPanel implements MouseMotionListener, MouseLis
         End = new ScreenPoint(0, 0);
         dot = new DrawDot();
         spray=new DrawSpray();
+        triangle=new DrawTriangle();
         addMouseListener(this);
         addMouseMotionListener(this);
 
@@ -71,10 +76,16 @@ public class PaintPanel  extends JPanel implements MouseMotionListener, MouseLis
             }else if(DrawShapes.type==DrawShapes.erase){
                // g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 dot.DrawShape(g2);
+            }else if(DrawShapes.type==DrawShapes.triangle){
+                triangle.DrawShape(g2);
             }else if(DrawShapes.type==DrawShapes.spray){
                 spray.DrawShape(g2);
             }else {
                 dot.DrawShape(g2);
+            }
+        }else if(!dottedTag&&isword==true){
+            if(DrawShapes.type==DrawShapes.word){
+            word.DrawShape(g2);
             }
         }
     }
@@ -90,7 +101,6 @@ public class PaintPanel  extends JPanel implements MouseMotionListener, MouseLis
             Begin = End;
         } else if (DrawShapes.type == DrawShapes.spray) {
             int temp=thick;
-         //   System.out.println(thick);
             for (int k = 0; k < 13; k++) {
                 Random r = new Random();
                 int a = r.nextInt(10+temp*3);
@@ -99,7 +109,13 @@ public class PaintPanel  extends JPanel implements MouseMotionListener, MouseLis
                 spray.points1.add(new ScreenPoint(End.x + a, End.y + b));
                 Begin = End;
             }
-        }repaint();
+        } else if (DrawShapes.type == DrawShapes.triangle) {
+            triangle.addpoint(Begin.x, Begin.y, End.x, End.y);
+            Begin = End;
+        } else if(DrawShapes.type==DrawShapes.word){
+
+        }
+            repaint();
     }
     /*
      * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
@@ -123,6 +139,12 @@ public class PaintPanel  extends JPanel implements MouseMotionListener, MouseLis
             color = ColorPanel.color;
             spray.setcolorthick(color, thick);
         }
+        else if(DrawShapes.type==DrawShapes.triangle) {
+            triangle=new DrawTriangle();
+            color = ColorPanel.color;
+            triangle.setcolorthick(color, thick);
+        }
+
     }
     /*
      * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
@@ -142,6 +164,8 @@ public class PaintPanel  extends JPanel implements MouseMotionListener, MouseLis
             DrawShapes.shapes.add(dot);
         }else if(DrawShapes.type==DrawShapes.spray){
             DrawShapes.shapes.add(spray);
+        }else if(DrawShapes.type==DrawShapes.triangle){
+            DrawShapes.shapes.add(triangle);
         }
         repaint();
     }
@@ -152,8 +176,19 @@ public class PaintPanel  extends JPanel implements MouseMotionListener, MouseLis
     }
 
     public void mouseClicked(MouseEvent mouseEvent) {
-        // TODO Auto-generated method stub
-
+        Begin = mouseEvent.getPoint();
+       if(DrawShapes.type==DrawShapes.word&&isword==false){
+            word=new DrawWord();
+            word.setS(JOptionPane.showInputDialog("请输入文字"));
+            word.x=Begin.x;
+            word.y=Begin.y;
+            isword=true;
+        }
+       else if(DrawShapes.type==DrawShapes.word&&isword==true){
+           isword=false;
+           DrawShapes.shapes.add(word);
+       }
+       repaint();
     }
 
     public void mouseEntered(MouseEvent mouseEvent) {

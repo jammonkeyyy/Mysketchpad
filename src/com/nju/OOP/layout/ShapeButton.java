@@ -19,10 +19,14 @@ public class ShapeButton extends JPanel{
             btn3 = new JButton("线条"),
             btn4 = new JButton("画笔"),
             btn5=new JButton("橡皮"),
-            btn6=new JButton("喷枪");
+            btn6=new JButton("喷枪"),
+            btn7=new JButton("三角"),
+            btn8=new JButton("文字");
+
+
 
     public ShapeButton() {
-        super(new GridLayout(3, 3));
+        super(new GridLayout(4, 4));
         setPreferredSize(new Dimension(250, 60));
         btn1.addActionListener(btns);
         btn2.addActionListener(btns);
@@ -30,11 +34,15 @@ public class ShapeButton extends JPanel{
         btn4.addActionListener(btns);
         btn5.addActionListener(btns);
         btn6.addActionListener(btns);
+        btn7.addActionListener(btns);
+        btn8.addActionListener(btns);
         add(btn1);
         add(btn2);
         add(btn3);
         add(btn4);
         add(btn5);
         add(btn6);
+        add(btn7);
+        add(btn8);
     }
 }

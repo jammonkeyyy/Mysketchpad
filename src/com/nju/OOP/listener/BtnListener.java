@@ -31,6 +31,12 @@ public class BtnListener implements ActionListener {
         if(actionCommand.contentEquals("喷枪")) {
             DrawShapes.type = DrawShapes.spray;
         }
+        if(actionCommand.contentEquals("三角")) {
+            DrawShapes.type = DrawShapes.triangle;
+        }
+        if(actionCommand.contentEquals("文字")) {
+            DrawShapes.type = DrawShapes.word;
+        }
         if(actionCommand.contentEquals("redo")) {
             Function.redo();
         }

@@ -3,7 +3,6 @@ package com.nju.OOP.shape;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.Random;
 import java.util.Vector;
 
 import com.nju.OOP.listener.ColorPanel;
